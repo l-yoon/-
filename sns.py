@@ -1,3 +1,9 @@
+class Member():
+    def __init__(self, name, username, password):
+        self.name = name
+        self.username = username
+        self.password = password
+
 #member instance
 member1 = Member("승원","one1122","qw1122")
 member2 = Member("원빈","beanone", "bboo1122")
@@ -11,4 +17,18 @@ members.append(member3)
 members.append(member4)
 
 for member in members:
-    print(members)
+    print(member.name)
+    
+# def create_member():
+#     name = input("이름을 입력하세요: ")
+#     username = input("아이디를 입력하세요: ")
+#     password = input("비밀번호를 입력하세요: ")
+#     return Member(name, username, password)
+
+
+#     question = input("새 회원을 등록하시겠습니까? (y/n): ")
+#     if question.lower() != 'y':
+#         break
+#     members = create_member()
+#     print(f"{members.name} 회원이 등록되었습니다.")
+
