@@ -1,22 +1,43 @@
-class Member():
-    def __init__(self, name, username, password):
-        self.name = name 
-        self.username = username 
+class Member:
+    def __init__(self, name, member_id, password):
+        self.name = name
+        self.member_id = member_id
         self.password = password
 
-def create_member():
-    name = input("이름을 입력하세요: ")
-    uesrname = input("아이디를 입력하세요: ")   
-    password = input("비밀번호를 입력하세요: ")
-    return Member(name, uesrname, password)
+    def display(self):
+        print(f"NAME: {self.name}")
+        print(f"ID: {self.member_id}")
 
-member = []
 
-while True:
-    question = input("새 회원을 등록하시겠습니까? (y/n): ")
-    if question.lower() != 'y':
-        break
-    member = create_member()
-    print(f"{member.name} 회원이 등록되었습니다.")
+class Post:
+    def __init__(self, title, content, author):
+        self.title = title
+        self.content = content
+        self.author = author
 
-    
+    def display(self):
+        print(f"제목: {self.title}")
+        print(f"내용: {self.content}")
+        print(f"작성자: {self.author.name}")
+
+
+# ----- 코드 실행 ------
+members = []
+posts = []
+
+
+# 멤버 추가
+members.append(Member("회원 이름", "회원 ID", "보안 비밀번호"))
+
+# 포스트 추가
+posts.append(Post("첫 번째 글", "첫 번째 글입니다.", members[0]))
+
+# 멤버 정보 출력
+for member in members:
+    member.display()
+    print()
+
+# 포스트 정보 출력
+for post in posts:
+    post.display()
+    print()
