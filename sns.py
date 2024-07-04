@@ -54,11 +54,12 @@ for member in members:
 # 맴버 추가 반복문
 while True:
     question = input("새 회원을 등록하시겠습니까? (y/n): ").lower()
-    if question == 'y':
-        members_add = create_member()
+    if question.lower() != 'y':
+            break
+        member = create_member()
         members.append(members_add)
-        print(f"{members_add.name} 회원이 등록되었습니다.")
-        break
+        print(f"{members.name} 회원이 등록되었습니다.")
+        
 
 print("추가된 회원 목록")
 for member in members:
