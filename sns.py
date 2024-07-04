@@ -9,6 +9,7 @@ class Post():
         self.author = username  # 인스턴스 변수 author
         self.title = title  # 인스턴스 변수 title
         self.content = content  # 인스턴스 변수 content
+        
 def create_member():
     name = input("이름을 입력하세요: ")
     username = input("아이디를 입력하세요: ")
