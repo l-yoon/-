@@ -60,9 +60,9 @@ while True:
     members.append(member)
     print(f"{member.name} 회원이 등록되었습니다.")
 
-print("모든 회원 목록")
+print("\n회원 목록:")
 for member in members:
-    print(member.name)
+    member.display()
 
 
 # post list
