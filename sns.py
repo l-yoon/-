@@ -57,7 +57,7 @@ while True:
     if question.lower() != 'y':
             break
         member = create_member()
-        members.append(members_add)
+        members.append(member)
         print(f"{members.name} 회원이 등록되었습니다.")
         
 
