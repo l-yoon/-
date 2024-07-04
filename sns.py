@@ -1,9 +1,18 @@
+import hashlib
+
 class Member():
     def __init__(self, name, username, password):
         self.name = name
         self.username = username
         self.password = password
 
+    def display(self):
+        print(f"이름: {self.name}, 아이디: {self.username}")
+
+    @staticmethod
+    def hash_password(password):
+        return hashlib.sha256(password.encode()).hexdigest()
+        
 class Post():
     def __init__(self, username, title, content):
         self.author = username  # 인스턴스 변수 author
