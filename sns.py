@@ -47,9 +47,6 @@ members.append(member2)
 members.append(member3)
 members.append(member4)
 
-print("추가된 회원 목록")
-for member in members:
-    member.display()
 
 # 맴버 추가 반복문
 while True:
