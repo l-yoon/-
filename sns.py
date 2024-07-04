@@ -61,9 +61,6 @@ while True:
     print(f"{member.name} 회원이 등록되었습니다.")
         
 
-print("추가된 회원 목록")
-for member in members:
-    member.display()
 
 # post list
 posts = []
