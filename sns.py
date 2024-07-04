@@ -63,7 +63,7 @@ while True:
 
 print("추가된 회원 목록")
 for member in members:
-    print(member.name)
+    member.display()
 
 # post list
 posts = []
