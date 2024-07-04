@@ -145,6 +145,8 @@ for post in posts:                                                    # posts �
         # 게시물(post)의 제목(title)을 출력해
         print(post.title)
 
+    ## 일단 정상적으로 작동은 되나.. 
+
     # 여기서 문제는 위에서 작성한 코드(경민님이 작성한 코드)
 
     #      def create_post(author):
