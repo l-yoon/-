@@ -17,7 +17,7 @@ class Member():
 
 class Post():
     def __init__(self, username, title, content):
-        self.author = username  # 인스턴스 변수 author
+        self.username = username  # 인스턴스 변수 author     # author 대신 username 사용하여 일관성 유지
         self.title = title  # 인스턴스 변수 title
         self.content = content  # 인스턴스 변수 content
 
@@ -35,26 +35,35 @@ def create_member():
 #     return Post(author_name, title_name, content_detail)
 
 
-def create_post(author):   # 새로 변경 코드 밑에서 '아이디 = username' 를 입력 받아서 그 아이디에 해당하는 '작성자 = author'를 받아와 그 '작성자 = author'의 새 게시물이 작성할꺼임
+def create_post(username):   # 새로 변경 코드 밑에서 '아이디 = username' 를 입력 받아서 그 아이디에 해당하는 작성자(name) 받아와 그 '작성자 = author'의 새 게시물이 작성
     title_name = input("제목을 작성해주세요:")
     content_detail = input("내용을 작성해주세요:")
-    return Post(author, title_name, content_detail)
+    return Post(username, title_name, content_detail)
 
 
-# member instance
-member1 = Member("승원", "one1122", "qw1122")
-member2 = Member("원빈", "beanone", "bboo1122")
-member3 = Member("지민", "ming22", "password98")
-member4 = Member("리나", "rina0000", "qwerty@")
+# # member instance
+# member1 = Member("승원", "one1122", "qw1122")
+# member2 = Member("원빈", "beanone", "bboo1122")
+# member3 = Member("지민", "ming22", "password98")
+# member4 = Member("리나", "rina0000", "qwerty@")
 
-# member list
-members = []
+# # member list
+# members = []
 
-# member add
-members.append(member1)
-members.append(member2)
-members.append(member3)
-members.append(member4)
+# # member add
+# members.append(member1)
+# members.append(member2)
+# members.append(member3)
+# members.append(member4)
+
+members = [                                               # 간소화 작업 
+    Member("승원", "one1122", "qw1122"),
+    Member("원빈", "beanone", "bboo1122"),
+    Member("지민", "ming22", "password98"),
+    Member("리나", "rina0000", "qwerty@")
+] 
+
+
 
 
 # 맴버 추가 반복문
@@ -131,7 +140,7 @@ username = input("\n게시글을 확인할 작성자의 아이디를 입력하�
 # 특정 유저 = username이 작성한 게시글을 출력할꺼야.
 print(f"\n{username}이(가) 작성한 게시글:")
 for post in posts:                                                 # posts 리스트 안에서
-    if post.author == username:                                    # 만약 위에서 입력한 username에 해당하는 author의 게시물이 있으면,
+    if post.username == username:                                    # 만약 위에서 입력한 입력받은 username과 동일한 username이 있으면,
         # 게시물(post)의 제목(title)을 출력해
         print(post.title)
 
@@ -161,15 +170,3 @@ for post in posts:                                                    # posts �
 
     # 위와 같이 입력하면 작동이 안됨
 
-    # 그리고
-# member1 = Member("승원", "one1122", "qw1122")
-# member2 = Member("원빈", "beanone", "bboo1122")
-# member3 = Member("지민", "ming22", "password98")
-# member4 = Member("리나", "rina0000", "qwerty@")
-
-# 이 멤버들을
-# 새 게시글을 작성하시겠습니까? (y/n): y
-# 작성자의 아이디를 입력하세요: 승원         # 이 단계에서 입력하면
-# 해당 아이디의 회원을 찾을 수 없습니다.     # 찾을 수가 없음
-
-# 이건 내일 해야G.
