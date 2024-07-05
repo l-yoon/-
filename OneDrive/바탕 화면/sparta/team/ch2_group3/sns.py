@@ -35,7 +35,8 @@ def create_member():
 #     return Post(author_name, title_name, content_detail)
 
 
-def create_post(username):   # 새로 변경 코드 밑에서 '아이디 = username' 를 입력 받아서 그 아이디에 해당하는 작성자(name) 받아와 그 '작성자 = author'의 새 게시물이 작성
+# 새로 변경 코드 밑에서 '아이디 = username' 를 입력 받아서 그 아이디에 해당하는 작성자(name) 받아와 그 '작성자 = author'의 새 게시물이 작성
+def create_post(username):
     title_name = input("제목을 작성해주세요:")
     content_detail = input("내용을 작성해주세요:")
     return Post(username, title_name, content_detail)
@@ -56,14 +57,12 @@ def create_post(username):   # 새로 변경 코드 밑에서 '아이디 = usern
 # members.append(member3)
 # members.append(member4)
 
-members = [                                               # 간소화 작업 
+members = [                                               # 간소화 작업
     Member("승원", "one1122", "qw1122"),
     Member("원빈", "beanone", "bboo1122"),
     Member("지민", "ming22", "password98"),
     Member("리나", "rina0000", "qwerty@")
-] 
-
-
+]
 
 
 # 맴버 추가 반복문
@@ -140,7 +139,8 @@ username = input("\n게시글을 확인할 작성자의 아이디를 입력하�
 # 특정 유저 = username이 작성한 게시글을 출력할꺼야.
 print(f"\n{username}이(가) 작성한 게시글:")
 for post in posts:                                                 # posts 리스트 안에서
-    if post.username == username:                                    # 만약 위에서 입력한 입력받은 username과 동일한 username이 있으면,
+    # 만약 위에서 입력한 입력받은 username과 동일한 username이 있으면,
+    if post.username == username:
         # 게시물(post)의 제목(title)을 출력해
         print(post.title)
 
@@ -154,7 +154,7 @@ for post in posts:                                                    # posts �
         # 게시물(post)의 제목(title)을 출력해
         print(post.title)
 
-    ## 일단 정상적으로 작동은 되나.. 
+    # 일단 정상적으로 작동은 되나..
 
     # 여기서 문제는 위에서 작성한 코드(경민님이 작성한 코드)
 
@@ -171,4 +171,3 @@ for post in posts:                                                    # posts �
     #     print(post.title)
 
     # 위와 같이 입력하면 작동이 안됨
-
