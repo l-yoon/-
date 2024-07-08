@@ -1,4 +1,6 @@
 import hashlib
+
+#class
 class Member:
     def __init__(self, name, username, password):
         self.name = name
@@ -17,6 +19,7 @@ class Post:
     def display(self):
         print(f"아이디: {self.author}, 타이틀: {self.title}")
 
+#input formulas 
 def create_member():
     while True:
         name = input("이름을 입력하세요: ").strip()
@@ -91,6 +94,7 @@ while True:
     else:
         print("올바른 값을 입력하세요!")
 
+# 게시물 추가 반복문
 while True:
     question = input("새 게시물을 등록하시겠습니까? (y/n): ").lower()
     if question == 'y':
@@ -132,6 +136,7 @@ def keyword():
         if word_post in post.content:
             print(post.title)
 
+#검색 반복문 
 while True:
     k = input("유저 아이디를 검색하려면 a / 특정단어를 검색하고 싶으면 b 입력 / 취소(아무 키 입력):") # a 입력하면 특정유저가 작성한 게시글의 제목할 수 있는 페이지로 이동
     # b 입력하면 '특정 단어'가 내용에 포함된 게시글의 제목 출력
@@ -152,8 +157,3 @@ while True:
     else:
         print("입력한 단어와 관련된 내용이 없습니다.")
         break
-
-
-
-# user_title()
-# word_title()
