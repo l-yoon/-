@@ -5,46 +5,33 @@ from flask_sqlalchemy import SQLAlchemy
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] =\
-    'sqlite:///' + os.path.join(basedir, 'database.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
 
 db = SQLAlchemy(app)
 
-
-class rps(db.Model):
+class Rps(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_choice = db.Column(db.String, primary_key=False)
     computer_choice = db.Column(db.String, primary_key=False)
     result = db.Column(db.String, primary_key=False)
-    odds = db.Column(db.Integer, primary_key=False)
-
 
 with app.app_context():
     db.create_all()
 
-
-# game logic
 options = ['가위', '바위', '보']
 
-get_computer_choice = random.choice(options)
-
+def get_computer_choice():
+    return random.choice(options)
 
 def winner(player_choice, computer_choice):
-    if (
-        (player_choice == '가위' and computer_choice == '보')
-            or (player_choice == '바위' and computer_choice == '가위')
-            or (player_choice == '보' and computer_choice == '바위')):
-        return '이겼음'
-
+    if (player_choice == '가위' and computer_choice == '보') or \
+        (player_choice == '바위' and computer_choice == '가위') or \
+        (player_choice == '보' and computer_choice == '바위'):
+        return '승리'
     elif player_choice == computer_choice:
-        return '비겼음'
-
+        return '무승부'
     else:
-        return '졌음'
-
-# 게임의 입출력을 Flask, HTML을 이용하도록
-# 메인 페이지
-
+        return '패배'
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -53,28 +40,30 @@ def home():
         computer_choice = get_computer_choice()
         result = winner(player_choice, computer_choice)
 
-        if result == '이겼음':
-            odds = 1
-        elif result == '비겼음':
-            odds = 0
-        else:
-            odds = -1
-
-        game = rps(user_choice=player_choice,
-                computer_choice=computer_choice, result=result, odds=odds)
+        game = Rps(user_choice=player_choice, computer_choice=computer_choice, result=result)
         db.session.add(game)
         db.session.commit()
 
-        return render_template('1page.html', player_choice=player_choice, computer_choice=computer_choice, result=result)
+        return redirect(url_for('result'))
+    
+    return render_template('index.html')
 
-    return render_template('1page.html')
+@app.route('/result')
+def result():
+    games = Rps.query.all()
+    win = len(Rps.query.filter_by(result='승리').all())
+    lose = len(Rps.query.filter_by(result='패배').all())
+    draw = len(Rps.query.filter_by(result='무승부').all())
 
+    stats = {
+        '승리': win,
+        '패배': lose,
+        '무승부': draw
+    }
 
-@app.route('/history')
-def history():
-    games = rps.query.all()
-    return render_template('history.html', games=games)
+    recent_games = Rps.query.order_by(Rps.id.desc()).limit(5).all()
 
+    return render_template('result.html', stats=stats, recent_games=recent_games)
 
 if __name__ == "__main__":
     app.run(debug=True)
