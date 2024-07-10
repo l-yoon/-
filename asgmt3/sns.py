@@ -21,19 +21,19 @@ class Post:
 def create_member():
     while True:
         name = input("이름을 입력하세요: ").strip()
-        if name:  # Checks if 'name' is not empty
+        if name:  
             break
         print("이름을 입력해주세요!")
 
     while True:
         username = input("아이디를 입력하세요: ").strip()
-        if username:  # Checks if 'username' is not empty
+        if username:  
             break
         print("아이디를 입력해주세요!")
 
     while True:
         password = input("비밀번호를 입력하세요: ").strip()
-        if password:  # Checks if 'password' is not empty
+        if password:  
             break
         print("비밀번호를 입력해주세요!")
 
